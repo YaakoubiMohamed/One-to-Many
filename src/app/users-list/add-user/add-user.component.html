@@ -1,0 +1,45 @@
+<h2>Add a new User</h2>
+<form [formGroup]="AddUser" (ngSubmit)="Add()">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nom</label>
+        <input type="text" formControlName="nom" class="form-control">
+        <div class="error" *ngIf="submitted && userForm.nom.errors?.required">
+          Nom is required.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Prenom</label>
+        <input type="text" formControlName="prenom" class="form-control">
+        <div class="error" *ngIf="submitted && userForm.prenom.errors?.required">
+          Prenom is required.
+        </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div class="error" *ngIf="submitted && userForm.email.errors?.required">
+        Enter your email.
+      </div>
+      <div class="error" *ngIf="submitted && userForm.email.errors?.email">
+        Enter valid email.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1">
+      <div *ngIf="submitted && userForm.password.errors" class="error">
+        <div *ngIf="userForm.password.errors.required">Mot de passe obligatoire</div>
+        <div *ngIf="userForm.password.errors.minlength">
+          Password must be at least 6 characters
+        </div>
+        <div *ngIf="userForm.password.errors.maxlength">
+          Password must not exceed 16 characters
+        </div>
+    </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Telephone</label>
+        <input type="number" formControlName="telephone" class="form-control">
+    </div>
+    <button type="submit"  class="btn btn-primary">Submit</button>
+  </form>

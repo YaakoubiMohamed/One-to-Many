@@ -1,0 +1,25 @@
+<a href="add-book" class="btn btn-primary">Add</a>
+
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Date publication</th>
+            <th>User</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of books">
+            <td>{{book.titre}}</td>
+            <td>{{book.description}}</td>
+            <td>{{book.date_publication}}</td>
+            <td>{{book.userID}}</td>
+            <td>
+                <a href="edit-book/{{book._id}}" class="btn btn-success">Upadte</a>
+                <a (click)="deleteBook(book)" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

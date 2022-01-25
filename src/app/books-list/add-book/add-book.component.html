@@ -1,0 +1,35 @@
+<h2>Add a new Book</h2>
+<form [formGroup]="AddBook" (ngSubmit)="Add()">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Titre</label>
+        <input type="text" formControlName="titre" class="form-control">
+        <div class="error" *ngIf="submitted && bookForm.titre.errors?.required">
+          Titre is required.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Description</label>
+        <textarea formControlName="description" class="form-control" id="" cols="30" rows="10"></textarea>
+        <div class="error" *ngIf="submitted && bookForm.description.errors?.required">
+            Description is required.
+        </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Date publication</label>
+      <input type="date" formControlName="date_publication" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div class="error" *ngIf="submitted && bookForm.date_publication.errors?.required">
+        Date is required.
+      </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Users</label>
+        <select class="form-control" formControlName="userID">
+            <option value=""></option>
+            <option value="{{user._id}}" *ngFor="let user of users">{{user.nom}} {{user.prenom}} </option>
+        </select>
+        <div class="error" *ngIf="submitted && bookForm.userID.errors?.required">
+            User is required.
+          </div>
+    </div>
+    <button type="submit"  class="btn btn-primary">Submit</button>
+  </form>
